@@ -3,6 +3,7 @@ require_once('common.php');
 if (!isLoggedIn()) {
     header('Location: /index.html');
 }
+getCSRFToken("asdasdadasdasd");
 ?>
 
 <!DOCTYPE html>
@@ -60,6 +61,7 @@ if (!isLoggedIn()) {
         <div class="col-md-4">
             <h3>Make a Transfer</h3>
             <form method="GET" action="transfer.php">
+                <input type="hidden" name="token" value="<?php echo isset($_SESSION['token']) ? $_SESSION['token'] : ''; ?>">
                 <div class="form-group">
                     <label for="to">To</label>
                     <input class="form-control" type="text" name="to" id="to"/>
@@ -75,8 +77,8 @@ if (!isLoggedIn()) {
 </div>
 <?php
 if (isset($_SESSION['alertMessage'])) { ?>
-<script>alert("Thanks for the money >:)")</script>
-<?php
+    <script>alert("Thanks for the money >:)")</script>
+    <?php
 }
 unset($_SESSION['alertMessage']);
 ?>
