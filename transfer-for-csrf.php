@@ -1,6 +1,6 @@
 <?php
 require_once('common.php');
-if(!isLoggedIn()) {
+if (!isLoggedIn()) {
     header('Location: /index.html');
 }
 
@@ -14,9 +14,13 @@ if ($amount > $_SESSION['balance']) {
 $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
 
 if (!$token || $token !== $_SESSION['token']) {
-    // return 405 http status code
-    echo '<script>alert("CSRF Patched. You are not authorized to access the page.")</script>';
-    header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
+
+    //CSRF Patched.
+    echo "<script>
+alert('CSRF Patched. You are not authorized to access the page.');
+window.location.href='/index.html';
+</script>";
+//    session_destroy();
     exit;
 } else {
     // process the form

@@ -3,7 +3,6 @@ require_once('common.php');
 if (!isLoggedIn()) {
     header('Location: /index.html');
 }
-getCSRFToken("asdasdadasdasd");
 ?>
 
 <!DOCTYPE html>
