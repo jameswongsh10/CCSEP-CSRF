@@ -1,6 +1,6 @@
-# CCSEP-CSRF-Exploit
-
 This project demo how basic CSRF works.
+
+# CCSEP-CSRF-Exploit
 
 Host the server with ```php -S 127.0.0.1:8888```
 
